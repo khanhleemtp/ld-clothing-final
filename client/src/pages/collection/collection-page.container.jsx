@@ -8,7 +8,9 @@ import { createStructuredSelector } from 'reselect';
 const mapStateToProps = createStructuredSelector({
   isLoading: selectIsCollectionsLoaded,
 });
-export const CollectionPageContainer = compose(
+const CollectionPageContainer = compose(
   connect(mapStateToProps),
   withSpinner
 )(CollectionPage);
+
+export default CollectionPageContainer;
