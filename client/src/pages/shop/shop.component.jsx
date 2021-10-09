@@ -1,10 +1,16 @@
 import './shop.styles.scss';
 import { Route } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchCollectionsStart } from './../../redux/shop/shop.actions';
-import { CollectionOverviewContainer } from './../../components/collection-overview/collection.container';
-import { CollectionPageContainer } from '../collection/collection-page.container';
+import Spinner from '../../components/with-spinner/spinner.component';
+
+const CollectionOverviewContainer = lazy(() =>
+  import('./../../components/collection-overview/collection.container')
+);
+const CollectionPageContainer = lazy(() =>
+  import('../collection/collection-page.container')
+);
 
 // import { createStructuredSelector } from 'reselect';
 // import {
@@ -30,8 +36,9 @@ const ShopPage = ({ fetchCollections, match }) => {
   }, [fetchCollections]);
 
   return (
-    <div className="shop-page">
-      {/* <Route
+    <Suspense fallback={<Spinner />}>
+      <div className="shop-page">
+        {/* <Route
           exact
           path={`${match.path}`}
           render={(props) => (
@@ -41,16 +48,17 @@ const ShopPage = ({ fetchCollections, match }) => {
             />
           )}
         /> */}
-      <Route
-        exact
-        path={`${match.path}`}
-        component={CollectionOverviewContainer}
-      />
-      <Route
-        path={`${match.path}/:collectionId`}
-        component={CollectionPageContainer}
-      />
-    </div>
+        <Route
+          exact
+          path={`${match.path}`}
+          component={CollectionOverviewContainer}
+        />
+        <Route
+          path={`${match.path}/:collectionId`}
+          component={CollectionPageContainer}
+        />
+      </div>
+    </Suspense>
   );
 };
 
