@@ -1,5 +1,5 @@
 .collection-item {
-  width: 20vw;
+  // width: 20vw;
   display: flex;
   flex-direction: column;
   height: 350px;
@@ -37,14 +37,12 @@
     display: flex;
     justify-content: space-between;
     font-size: 18px;
-
-    .name {
-      width: 90%;
-      margin-bottom: 15px;
-    }
-
-    .price {
-      width: 10%;
+  }
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    .collection-footer {
+      font-size: 16px;
+      padding: 0 10px;
     }
   }
 }

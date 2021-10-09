@@ -1,4 +1,8 @@
 .custom-button {
+  @media screen and (max-width: 800px) {
+    min-width: unset;
+    padding: 0;
+  }
   min-width: 165px;
   width: auto;
   height: 50px;

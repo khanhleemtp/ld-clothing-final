@@ -6,9 +6,11 @@ const CssOption = css`
 `;
 
 export const LogoContainer = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   width: 70px;
-  padding: 25px;
 `;
 
 export const HeaderContainer = styled.div`

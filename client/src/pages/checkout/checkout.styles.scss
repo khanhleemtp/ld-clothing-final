@@ -34,4 +34,18 @@
     margin-top: 40px;
     font-size: 24px;
   }
+  @media screen and (max-width: 420px) {
+    width: auto;
+    margin: auto;
+    font-size: 16px;
+    padding: 12px;
+    .total {
+      font-size: 18px;
+    }
+    .test-warning {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  }
 }

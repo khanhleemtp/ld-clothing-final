@@ -11,6 +11,7 @@ import { checkUserSession } from './redux/user/user.action';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import CheckoutPage from './pages/checkout/checkout.component';
+import ContactPage from './pages/contact/contact-page.component';
 
 const App = ({ checkUserSession, currentUser }) => {
   useEffect(() => {
@@ -19,12 +20,13 @@ const App = ({ checkUserSession, currentUser }) => {
 
   console.log('currentUser: ', currentUser);
   return (
-    <div className="App">
+    <div>
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/shop" component={ShopPage} />
         <Route exact path="/checkout" component={CheckoutPage} />
+        <Route exact path="/contact" component={ContactPage} />
         <Route
           exact
           path="/signin"
@@ -33,15 +35,9 @@ const App = ({ checkUserSession, currentUser }) => {
           }
         />
       </Switch>
-
-      {/* <HomePage /> */}
     </div>
   );
 };
-
-// const mapStateToProps = ({ user }) => ({
-//   currentUser: user.currentUser,
-// });
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
